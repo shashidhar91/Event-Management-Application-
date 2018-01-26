@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>NT Event Group</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="theme/assets/css/main.css" />
+    </h:head>
+    <h:body>
+        <p:growl id="growl" showDetail="true" life="2000"/> 
+        <header id="header">
+            <h:form>
+                <div class="inner">
+                    <a href="index.xhtml" class="logo">NT Event Group</a>
+                    <nav id="nav">
+                        <a href="index.xhtml">HOME</a>
+                        <a href="pages/event-detail.xhtml">CREATE EVENT </a>
+                        <p:commandLink rendered="#{not empty username}"><p:outputLabel value="Welcome #{username}" rendered="#{not empty username}"></p:outputLabel> 
+                        </p:commandLink>
+                        <p:commandLink rendered="#{not empty username}" id="logut" ajax="" update="growl" actionListener="#{loginMB.logout('inside')}">
+                            <h:outputText value="Logout" />
+                        </p:commandLink>
+
+                    </nav>
+                </div>
+            </h:form>
+        </header>
+
+        <h:form>
+            <p:dataGrid var="item" value="#{eventMB.allEventByProperty}" columns="3" layout="grid" rows="6" paginator="true" id="item" >
+                <p:panel header="#{item.title}" style="text-align:center">
+                                                   <h:panelGrid columns="1" style="width:100%">
+                        <h:outputText value="#{item.eventId}"></h:outputText>
+                        <h:outputText value="#{item.title}"></h:outputText>
+                        <h:outputText value="#{item.description}"></h:outputText>
+                        <h:commandButton action="#{eventMB.registerEvent}" id="submit" value="Register" ></h:commandButton>  
+
+                    </h:panelGrid>
+                </p:panel>     
+            </p:dataGrid>
+
+        </h:form>
+
+        <section id="footer">
+            <div class="inner">
+                <div class="copyright">
+                    Copyright © NT Event Group All Rights Reserved 
+                </div>
+            </div>	
+        </section>
+    </h:body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+	<link rel="stylesheet" href="../theme/assets/css/main.css" />
+</h:head>
+<h:body onload="#{eventMB.clearFields()}">
+	<p:growl id="growl" showDetail="true" life="2000"/>
+	<header id="header">
+		 
+	</header>
+	<section id="main" >
+		<div class="inner">
+			<header class="major special">
+				<h1>Event</h1>
+				<div class="float-right">
+					<h:outputLink rendered="true" styleClass="add_button"  value="event-detail.xhtml"><span>+</span>Add Event</h:outputLink>
+				</div>
+				<!-- Search Fields -->
+			</header>
+			
+			<h:form id="form">
+				<div id="userGrid" class="grid-table">
+		    		<p:dataTable  value="#{eventMB.eventManagedBeans}" id="eventTable" rows="20" 
+						var="event" paginator="true" 
+						paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						currentPageReportTemplate="Showing {startRecord}-{endRecord} out of {totalRecords}" 
+						emptyMessage="No Data Found"
+						selectionMode="single"
+						rowKey="#{event.eventId}"
+						>
+						<p:ajax immediate="true" event="rowSelect"   update=":form" listener="#{userMB.getUser}" > 
+							<f:param name="userId" value="#{user.userId}" />
+						</p:ajax>
+       						
+ 
+							<f:facet name="header"> Event</f:facet>
+							
+							<p:column sortBy="#{event.eventTitle}">
+    							<f:facet name="header">Event Title</f:facet>
+    							<f:param name="eventId" value="#{event.eventId}" />
+    							#{event.eventTitle}
+	    					</p:column>
+		    					
+		    				<p:column sortBy="#{event.eventType}">
+    							<f:facet name="header">Event Type</f:facet>
+    							<f:param name="eventId" value="#{event.eventId}" />
+    							#{event.eventType}
+	    					</p:column>
+	    					
+	    					<p:column sortBy="#{event.startDate}">
+    							<f:facet name="header">Start Date</f:facet>
+    							<f:param name="eventId" value="#{event.eventId}" />
+    							#{event.startDate}
+	    					</p:column>
+	    					
+	    					<p:column sortBy="#{event.endDate}">
+    							<f:facet name="header">End Date</f:facet>
+    							<f:param name="eventId" value="#{event.eventId}" />
+    							#{event.endDate}
+	    					</p:column>
+
+							
+						</p:dataTable>
+					</div>
+				</h:form>
+		</div>
+	</section>
+	<!-- Footer -->
+	<section id="footer">
+				
+	</section>
+	<!-- Scripts -->
+	<script src="../theme/assets/js/jquery.min.js"></script>
+	<script src="../theme/assets/js/skel.min.js"></script>
+	<script src="../theme/assets/js/util.js"></script>
+	<script src="../theme/assets/js/main.js"></script>
+</h:body>
+</html>

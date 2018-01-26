@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>WRONG</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>/dashboard.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>pages/user-detail.xhtml</display-name>
+		<from-view-id>/pages/user-detail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ADD-SUCCESS</from-outcome>
+			<to-view-id>/pages/search-user.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>pages/search-user.xhtml</display-name>
+		<from-view-id>/pages/search-user.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>VIEW</from-outcome>
+			<to-view-id>/pages/user-detail.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>pages/user-detail.xhtml</display-name>
+		<from-view-id>/pages/user-detail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>DELETE-CANCEL</from-outcome>
+			<to-view-id>/pages/search-user.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>pages/event-detail.xhtml</display-name>
+		<from-view-id>/pages/event-detail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ADD</from-outcome>
+			<to-view-id>/pages/event-detail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>pages/user-detail.xhtml</display-name>
+		<from-view-id>/pages/user-detail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>REGISTER-SUCCESS</from-outcome>
+			<to-view-id>/Event.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>login.xhtml</display-name>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>/Event.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+        <navigation-rule>
+		<display-name>pages/event-detail.xhtml</display-name>
+		<from-view-id>/pages/event-detail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SUCCESS</from-outcome>
+			<to-view-id>/Event.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+        
+        
+
+</faces-config>

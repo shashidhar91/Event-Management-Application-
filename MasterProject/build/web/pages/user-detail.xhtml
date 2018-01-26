@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+	<link rel="stylesheet" href="../theme/assets/css/main.css" />
+</h:head>
+<h:body onload="#{userMB.getUserByUserId()}">
+	<header id="header">
+		<div class="inner">
+			<a href="index.xhtml" class="logo">NT Event Group</a>
+			<nav id="nav">
+				<a href="../index.xhtml">Home</a>
+				<!--<a href="../login.xhtml">Login</a>-->
+			</nav>
+		</div>
+	</header>
+	<section id="main" >
+		<div class="inner">
+			<header class="major special">
+				
+				<h1>User</h1>
+				<!-- Search Fields -->
+			</header>
+			
+			<h:form id="user-form"
+					styleClass="validate-form1" prependId="false">
+					<h:panelGrid id="add">
+						<p:panel header="#{utilMB.heading} User">
+							<div align="center">
+								<p:panelGrid id="user-grid" columns="3" columnClasses="label, value" styleClass="panelGrid">
+							
+									<p:outputLabel for="firstName" id="firstNameLAbel" value="First Name : "></p:outputLabel>
+									<p:inputText  required="#{!empty param['save']}"
+										value="#{userMB.firstName}" requiredMessage="Field is required" 
+										id="firstName" styleClass="textfield" maxlength="254" > 
+									</p:inputText>
+									<p:message id="firseNameMessage" for="firstName"></p:message>
+									
+									<p:outputLabel for="lastName" id="lastNameLabel" value="Last Name : "></p:outputLabel>
+									<p:inputText  required="#{!empty param['save']}"
+										value="#{userMB.lastName}" requiredMessage="Field is required" 
+										id="lastName" styleClass="textfield" maxlength="254" > 
+									</p:inputText>
+									<p:message for="lastName"></p:message>
+                                                                        
+
+                                                                        <p:outputLabel for="username" id="usernameLabel" value="Username : "></p:outputLabel>
+									<p:inputText value="#{userMB.username}" required="true" requiredMessage="Field is required"  id="username" styleClass="textfield" maxlength="254" > 
+									</p:inputText>
+									<p:message for="username"></p:message>
+									
+									<p:outputLabel for="password" id="passwordLabel" value="Password : "></p:outputLabel>
+									<h:inputSecret id="password" value="#{userMB.password}" required="true" requiredMessage="Field is required"/>
+									<p:message for="password"></p:message>                                                                     
+									
+									<p:outputLabel for="dateOfBirth" id="dateOfBirthLabel" value="Date Of Birth : "></p:outputLabel>
+									<p:calendar id="dateOfBirth" styleClass="calendar" pattern="dd-MM-yyyy"  value="#{userMB.dateOfBirth}" >
+									</p:calendar>
+									<p:message for="dateOfBirth"></p:message>
+									
+
+									<p:outputLabel id="genderLabel" for="genderCombo" value="Gender :"  />
+                                                                        <h:selectOneMenu styleClass="select ui-corner-all" id="genderCombo" value="#{userMB.gender}" >
+         								<f:selectItem itemLabel="Select Gender" itemValue="" noSelectionOption="true" />
+										<f:selectItem itemLabel="Male" itemValue="Male"  />
+										<f:selectItem itemLabel="Female" itemValue="Female"/>
+									</h:selectOneMenu>
+									<p:message id="genderComboMessage" for="genderCombo"></p:message>
+									
+									<p:outputLabel for="cellPhone" id="cellPhoneLabel" value="Cell Phone : "></p:outputLabel>
+									<p:inputText value="#{userMB.cellPhone}" requiredMessage="Field is required" 
+										id="cellPhone" styleClass="textfield" maxlength="254" > 
+									</p:inputText>
+									<p:message for="cellPhone"></p:message>
+									
+									
+									
+								</p:panelGrid>
+							</div>
+							<!-- Command Buttons -->
+							<div class="ui-helper-clearfix stdformbutton">
+							
+         				    	<h:commandButton   value="#{utilMB.saveButtonTitle}"  id="save" action="#{userMB.addUser}" ></h:commandButton>
+         				    	<h:commandButton   rendered= "#{utilMB.isDelete}" value="Delete" immediate="true" action="#{userMB.deleteUser}"></h:commandButton>
+         						<h:commandButton   value="Cancel" immediate="true" action="#{userMB.cancelUser}"></h:commandButton>
+         					</div>
+						</p:panel>
+					</h:panelGrid>
+				</h:form>
+		</div>
+	</section>
+	<!-- Footer -->
+	<section id="footer">
+		<div class="inner">
+			<div class="copyright">
+				Copyright © NT Event Group All Rights Reserved 
+			</div>
+		</div>	
+	</section>
+	<!-- Scripts -->
+	<script src="../theme/assets/js/skel.min.js"></script>
+	<script src="../theme/assets/js/util.js"></script>
+	<script src="../theme/assets/js/main.js"></script>
+</h:body>
+</html>

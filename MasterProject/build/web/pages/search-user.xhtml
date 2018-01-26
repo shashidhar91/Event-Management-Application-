@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+	<link rel="stylesheet" href="../theme/assets/css/main.css" />
+</h:head>
+<h:body onload="#{userMB.clearFields()}">
+	<p:growl id="growl" showDetail="true" life="2000"/>
+	<header id="header">
+		 <ui:include src="../common/menus.xhtml" />
+	</header>
+	<section id="main" >
+		<div class="inner">
+			<header class="major special">
+				<h1>User</h1>
+				<div class="float-right">
+					<h:outputLink rendered="true" styleClass="add_button"  value="user-detail.faces"><span>+</span>Add User</h:outputLink>
+				</div>
+				<!-- Search Fields -->
+			</header>
+			
+			<h:form id="form">
+				<div id="userGrid" class="grid-table">
+		    		<p:dataTable  value="#{userMB.userManagedBeans}" id="designationTable" rows="20" 
+						var="user" paginator="true" 
+						paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						currentPageReportTemplate="Showing {startRecord}-{endRecord} out of {totalRecords}" 
+						emptyMessage="No Data Found"
+						selectionMode="single"
+						rowKey="#{user.userId}"
+						>
+						<p:ajax immediate="true" event="rowSelect"   update=":form" listener="#{userMB.getUser}" > 
+							<f:param name="userId" value="#{user.userId}" />
+						</p:ajax>
+       						
+ 
+							<f:facet name="header"> User</f:facet>
+							<p:column sortBy="#{user.firstName}">
+    							<f:facet name="header">First Name</f:facet>
+    							<f:param name="userId" value="#{user.userId}" />
+    							#{user.firstName}
+	    						
+           
+	    					</p:column>
+		    					
+		    				<p:column sortBy="#{user.lastName}">
+		    					<f:facet name="header">Last Name </f:facet>
+		    					<f:param name="userId" value="#{user.userId}" />
+		    					#{user.lastName}
+		    				</p:column>
+		    				
+		    				<p:column sortBy="#{user.cellPhone}">
+		    					<f:facet name="header">Phone No </f:facet>
+		    					<f:param name="userId" value="#{user.userId}" />
+		    					#{user.cellPhone}
+		    				</p:column>
+		    					
+		    				<p:column sortBy="#{user.gender}">
+		    					<f:facet name="header">Gender </f:facet>
+		    					<f:param name="userId" value="#{user.userId}" />
+		    					#{user.gender}
+		    				</p:column>
+
+							
+						</p:dataTable>
+					</div>
+				</h:form>
+		</div>
+	</section>
+	<!-- Footer -->
+	<section id="footer">
+				
+	</section>
+	<!-- Scripts -->
+	<script src="../theme/assets/js/jquery.min.js"></script>
+	<script src="../theme/assets/js/skel.min.js"></script>
+	<script src="../theme/assets/js/util.js"></script>
+	<script src="../theme/assets/js/main.js"></script>
+</h:body>
+</html>
